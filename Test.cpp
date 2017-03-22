@@ -70,7 +70,7 @@ void test()
         cout<<"Count paths:\tFail"<<endl;
     }
 
-/*    int** graph3 = _initGraph(8);
+    int** graph3 = _initGraph(8);
     graph3[0][5]=9;graph3[0][6]=9;graph3[0][7]=9;
     graph3[1][4]=9;graph3[1][6]=9;graph3[1][7]=9;
     graph3[2][4]=9;graph3[2][5]=9;graph3[2][7]=9;
@@ -114,7 +114,7 @@ void test()
     cout<<"Color graph tests #3"<<endl;
     cout<<"Number of vertices: 8"<<endl;
     cout<<"Answer count: "<<_countColors(vertex_colors3)<<endl;
-    cout<<"Optimal answer: 2"<<endl;  */
+    cout<<"Optimal answer: 2"<<endl;
 
 
 }

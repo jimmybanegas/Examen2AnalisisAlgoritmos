@@ -1,8 +1,7 @@
 # depslib dependency file v1.0
-1490147265 source:c:\users\jimmy ramos\documents\algoritmos\examen2algoritmos\main.cpp
+1490218814 source:c:\users\jimmy ramos\documents\algoritmos\examen2algoritmos\main.cpp
 	"Test.h"
 	<iostream>
-	"Edge.h"
 
 1490143714 c:\users\jimmy ramos\documents\algoritmos\examen2algoritmos\test.h
 	<iostream>
@@ -15,7 +14,7 @@
 	<list>
 	<set>
 
-1490144010 source:c:\users\jimmy ramos\documents\algoritmos\examen2algoritmos\test.cpp
+1490155990 source:c:\users\jimmy ramos\documents\algoritmos\examen2algoritmos\test.cpp
 	"Test.h"
 
 1488935756 source:c:\users\jimmy ramos\documents\algoritmos\examen2algoritmos\edge.cpp

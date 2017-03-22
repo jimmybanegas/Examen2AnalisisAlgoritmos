@@ -1,74 +1,31 @@
 #include "Test.h"
 #include <iostream>
-#include "Edge.h"
 using namespace std;
 
-int cont = 0;
+int cont;
 
-vector<Edge> getEdges(int ** graph, int size)
+void countPaths(int** DAG, int size, int origin, int destination, int current)
 {
-    vector<Edge> edges;
-    for (int i = 0; i <size; i++)
-        for (int j = 0; j < size; j++)
-            if(graph[i][j]!=-1)
-            {
-                Edge edge(i,j,graph[i][j]);
-                edges.push_back(edge);
-            }
-    return edges;
-}
-
-void findPath(int destination,vector<Edge> edges,int initialDestination){
-   printf("%d \n",destination);
-
-   for(int x = 0; x< edges.size(); x++){
-        if(initialDestination == edges[x].destination){
-            cont+=1;
-            break;
+    for(int i=0; i<size; i++)
+    {
+        if(DAG[current][i] != -1)
+        {
+            if(destination == i)
+                cont++;
+            countPaths(DAG,size,origin,destination,i);
         }
-        if(edges[x].source == destination){
-            findPath(edges[x].destination,edges,initialDestination);
-        }
-   }
+    }
 }
 
 //Counts the number of posibles paths from origin to destination in the given DAG (Directed Acyclic Graph)
 //Use Dynamic Programing to optimize the process
 int countPaths(int** DAG, int size, int origin, int destination)
 {
-      cont = 0;
-      printf("origin %d \n",origin);
-      printf("destination %d \n",destination);
-     // cont = 0;
-   // return -1;
-   vector<Edge> edges = getEdges(DAG,size);
- //  printf (" edges size %d", edges.size());
-
-
-    for (int j = 0; j <edges.size(); j++)
-    {
-        int u = edges[j].source;
-        int v = edges[j].destination;
-        int weight = edges[j].weight;
-
-       if(cont > 0)
-            break;
-
-        if(edges[j].source == origin){
-
-            printf("\n source %d",u);
-            printf(" destination %d",v);
-            printf(" weight %d  \n",weight);
-
-            findPath(edges[j].destination,edges,destination);
-        }
-
-        printf("cont al salir %d \n", cont);
-
-    }
-
-    return cont+1;
+    cont = 0;
+    countPaths(DAG,size,origin,destination,origin);
+    return cont;
 }
+
 
 //Returns a vector that maps each vertex to a color (or number)
 //Two adjacent vertex cannot have the same color
@@ -78,6 +35,16 @@ int countPaths(int** DAG, int size, int origin, int destination)
 vector<int> getVertexColors(int** graph, int size)
 {
     vector<int> answer;
+    for(int k = 0; k < size; ++k) {
+        answer.push_back(0);
+    }
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if(graph[i][j] != -1 && answer[i] == answer[j])
+                answer[j] = i+1;
+        }
+    }
     return answer;
 }
 
